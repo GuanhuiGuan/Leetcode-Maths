@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int reverse(int x) {
+        
+        long long t = 0;
+        // int sym = 1;
+        // if(x < 0){
+        //     sym = -1;
+        // }
+        // x = sym * x;    //abs
+        while(x){
+            t = 10 * t + x % 10;
+            x = x / 10;
+        }
+        // t = sym * t;
+        return (t > INT_MAX || t < INT_MIN) ? 0 : t;
+    }
+};
