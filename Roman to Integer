@@ -1,0 +1,20 @@
+class Solution {//I V X L C D M
+public:
+    int romanToInt(string s) {
+        map<char, int> value = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
+        
+        int digit = value[s.back()];            //First add last element
+        for(int i = s.size() - 1; i > 0; i--)
+        {
+            if(value[s[i - 1]] >= value[s[i]])   //Deal with the former element
+            {
+                digit += value[s[i - 1]];       //Former larger or equal: add
+            }
+            else
+            {
+                digit -= value[s[i - 1]];       //Former smaller: minus
+            }
+        }
+        return digit;
+    }
+};
