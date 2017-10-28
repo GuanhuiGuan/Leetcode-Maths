@@ -1,0 +1,27 @@
+class Solution {//cpp
+public:
+    bool isPalindrome(int x) {
+        if(x < 0 || x % 10 == 0 && x != 0)   return false;//negative or multiple of 10(otherwise it will pass our inverse determination)
+        if(x < 10)  return true;//single digit including 0!!
+        int y = 0;
+        while(x > y)    //create an invert integer; if palindrome, they're the same
+        {
+            y = 10 * y + x % 10;
+            x = x / 10;
+        }
+        return (x == y || x == y / 10) ? true: false;
+    }
+};
+
+class Solution {//java
+    public boolean isPalindrome(int x) {
+        if(x < 0 || x != 0 && x % 10 == 0){return false;}
+        int y = 0;
+        while(x > y)
+        {
+            y = y * 10 + x % 10;
+            x /= 10;
+        }
+        return (x == y || x == y / 10) ? true : false;
+    }
+}
