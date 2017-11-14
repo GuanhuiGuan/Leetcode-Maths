@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        int[][] row = new int[9][9];//use each row to store data
+        int[][] column = new int[9][9];
+        int[][] block = new int[9][9];
+        
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[0].length; j++){
+                if(board[i][j] != '.'){
+                    int x = board[i][j] - '1';
+                    int k = i/3 *3 + j/3;//find the subblock
+                    if(row[i][x] == 1 || column[j][x] == 1 || block[k][x] == 1) return false;
+                    row[i][x] = 1;
+                    column[j][x] = 1;
+                    block[k][x] = 1;
+                }
+            }
+        }
+        return true;
+    }
+}
